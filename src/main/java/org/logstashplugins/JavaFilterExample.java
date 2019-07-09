@@ -88,12 +88,14 @@ public class JavaFilterExample implements Filter {
             if (extraInfo.contains("HORODATAGE DE DEBUT")) {
                 Matcher mstartProcess = Pattern.compile("(\\d{4}\\-\\d{2}\\-\\d{2}\\-\\d{2}\\.\\d{2}\\.\\d{2})").matcher(extraInfo);
                 if (mstartProcess.find()) {
-                    information.put("startProcess", mstartProcess.group(1));
+                    System.out.println("message: " + extraInfo + "starttime: " + mstartProcess.group(1));
+                    //information.put("startProcess", mstartProcess.group(1));
                 }
             } else if (extraInfo.contains("HORODATAGE DE FIN")) {
                 Matcher mendProcess = Pattern.compile("(\\d{4}\\-\\d{2}\\-\\d{2}\\-\\d{2}\\.\\d{2}\\.\\d{2})").matcher(extraInfo);
                 if (mendProcess.find()) {
-                    information.put("endProcess", mendProcess.group(1));
+                    System.out.println("message: " + extraInfo + "endtime: " + mendProcess.group(1));
+                    //information.put("endProcess", mendProcess.group(1));
                 }
             }
         }
@@ -154,7 +156,7 @@ public class JavaFilterExample implements Filter {
             HashMap<String, String> stepBlockElement = stepBlock.get(keyEventCollected);
             if (!stepBlockElement.isEmpty()) {
                 event = new org.logstash.Event();
-                System.out.println(count + " --- " + keyEventCollected);
+                System.out.println("count: " + count + " --- " + keyEventCollected);
                 count++;
                 event.setField("step", keyEventCollected);
                 for (String keyCollected : stepBlockElement.keySet()) {

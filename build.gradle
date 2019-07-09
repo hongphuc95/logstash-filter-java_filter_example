@@ -1,14 +1,11 @@
 import java.nio.file.Files
-
-import java.nio.file.Files
-import java.nio.file.Path
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING
 
 apply plugin: 'java'
 apply from: LOGSTASH_CORE_PATH + "/../rubyUtils.gradle"
 
 // ===========================================================================
-// plugin info
+// plugin info for filter
 // ===========================================================================
 group                      'org.logstashplugins' // must match the package of the main plugin class
 version                    "${file("VERSION").text.trim()}" // read from required VERSION file
@@ -22,6 +19,7 @@ pluginInfo.pluginType      = "filter"
 pluginInfo.pluginClass     = "JavaFilterExample"
 pluginInfo.pluginName      = "java_filter_example" // must match the @LogstashPlugin annotation in the main plugin class
 // ===========================================================================
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
